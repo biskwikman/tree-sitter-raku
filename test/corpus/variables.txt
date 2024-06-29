@@ -1,0 +1,14 @@
+===============
+Define Variable
+===============
+
+my $var = 12
+
+---
+
+(source_file
+	(variable_definition
+		(scope_designator)
+		(sigil)
+		(identifier)
+		(assignment_operator)))

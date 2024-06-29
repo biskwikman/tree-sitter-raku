@@ -1,0 +1,42 @@
+{
+  "name": "tree-sitter-raku",
+  "version": "1.0.0",
+  "description": "tree sitter grammar for raku",
+  "main": "index.js",
+  "types": "bindings/node",
+  "scripts": {
+    "test": "test",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
+  },
+  "author": "Dan Henri",
+  "license": "ISC",
+  "dependencies": {
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "prebuildify": "^6.0.0"
+  },
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
+  "tree-sitter": [
+    {
+      "scope": "source.raku",
+      "injection-regex": "^raku$"
+    }
+  ]
+}
