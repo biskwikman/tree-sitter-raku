@@ -5,11 +5,11 @@ module.exports = grammar({
     source_file: $ => repeat($._definition),
 
     _definition: $ => choice(
-      $.function_definition,
       $.variable_definition,
+      $.subroutine_definition,
     ),
 
-    function_definition: $ => seq(
+    subroutine_definition: $ => seq(
       'func',
       $.parameter_list,
       $._type,  
@@ -18,6 +18,7 @@ module.exports = grammar({
     variable_definition: $ => seq(
       $.scope_designator,
       $.sigil,
+      optional($.twigil),
       $.identifier,
       $.assignment_operator,
       /\d+/,
@@ -38,7 +39,11 @@ module.exports = grammar({
     ),
 
     _type: $ => choice(
-      'bool'
+      $.int
+    ),
+
+    int: $ => optional(
+      'uint',
     ),
 
     identifier: $ => /[a-z]+/,
@@ -48,7 +53,19 @@ module.exports = grammar({
       '@',
       '%',
       '&',
-    )
+    ),
+
+    twigil: $ => choice(
+      '*',
+      '?',
+      '!',
+      '.',
+      '<',
+      '^',
+      ':',
+      '=',
+      '~',
+    ),
 
   }
 });

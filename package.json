@@ -12,7 +12,8 @@
   "author": "Dan Henri",
   "license": "ISC",
   "dependencies": {
-    "node-gyp-build": "^4.8.0"
+    "node-gyp-build": "^4.8.0",
+    "typescript-language-server": "^4.3.3"
   },
   "peerDependencies": {
     "tree-sitter": "^0.21.0"
