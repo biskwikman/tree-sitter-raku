@@ -17,11 +17,16 @@ module.exports = grammar({
 
     variable_definition: $ => seq(
       $.scope_designator,
-      $.sigil,
+      optional($._type),
+      choice($.sigil, '\\'),
       optional($.twigil),
       $.identifier,
       $.assignment_operator,
-      /\d+/,
+      $.statement,
+    ),
+
+    statement: $ => seq(
+      
     ),
 
     scope_designator: $ => choice(
@@ -39,11 +44,7 @@ module.exports = grammar({
     ),
 
     _type: $ => choice(
-      $.int
-    ),
-
-    int: $ => optional(
-      'uint',
+      'Int',
     ),
 
     identifier: $ => /[a-z]+/,
